@@ -51,13 +51,11 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 .app {
-  display: flex;
   height: 100svh;
   width: 100svw;
   overflow-y: visible;
   overflow-x: scroll;
   padding: 0;
-  color: var(--text-color);
 }
 h1 {
   font-weight: 600;
