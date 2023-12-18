@@ -1,0 +1,107 @@
+:root {
+  // colors
+  --white: #ffffff;
+  --black: #000000;
+  --bgColor: rgba(0, 0, 0, 0.5);
+  --trackColor: #e7e7e7;
+  --lightGrey: #c8c8c8;
+  --iconSize: 30px;
+  --navIconSize: 25px;
+  --iconColor: rgb(255, 255, 255);
+
+  // glass card
+  --glassBgColor: rgba(255, 255, 255, 0);
+
+  // other
+  --doc-height: 100%;
+  --shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --topBarHeight: 5rem;
+  --hoverAnimation: all 175ms ease-in-out;
+  --buttonPadding: 0.3rem 1.2rem 0.3rem 1.2rem;
+  --borderRadius: 16px;
+  --border: 2px solid var(--borderCard);
+}
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--white); /* color of the scroll thumb */
+  border-radius: 2px;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color) !important;
+  padding: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+.app {
+  display: flex;
+  height: 100svh;
+  width: 100%;
+  overflow-y: visible;
+  overflow-x: scroll;
+  padding: 0;
+  color: var(--text-color);
+}
+h1 {
+  font-weight: 600;
+}
+h2 {
+  font-weight: 500;
+}
+h3 {
+  font-weight: 400;
+}
+h4 {
+  font-weight: 400;
+}
+button {
+  all: unset;
+  cursor: pointer;
+}
+ul {
+  all: unset;
+}
+li {
+  all: unset;
+}
+li a {
+  all: unset;
+}
+a {
+  all: unset;
+  text-decoration: underline;
+  cursor: pointer;
+}
+input {
+  all: unset;
+}
+button,
+textarea,
+input,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
