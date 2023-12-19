@@ -2,7 +2,6 @@ import React from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
-import { FLIKR_CREDS } from "../../utils/secrets";
 
 export default function PhotoGallery() {
   const {
@@ -20,7 +19,7 @@ export default function PhotoGallery() {
           {PhotoData.photoset?.photo.map((photo: any, index: number) => (
             <li key={index} className="photo-item">
               <img
-                src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
+                src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.png`}
                 alt={photo.id}
               />
             </li>
