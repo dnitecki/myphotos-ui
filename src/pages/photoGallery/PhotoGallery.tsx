@@ -1,49 +1,32 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
+import { useQuery } from "react-query";
+import { FLIKR_CREDS } from "../../utils/secrets";
 
 export default function PhotoGallery() {
-  useEffect(() => {
-    getPhotosList();
-  });
+  const {
+    isLoading: isPhotosLoading,
+    error: isPhotoError,
+    data: PhotoData,
+  } = useQuery(["photoList"], getPhotosList);
+
+  console.log(PhotoData);
 
   return (
     <div className="photo-gallery-container">
-      <ul className="photo-gallery-list">
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/VWcPlbHglYc" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/e6FMMambeO4" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/klCiPmzUw0Y" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/O0N9MF--hK4" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/FV3GConVSss" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/0ESjL-Nw22Y" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/KTVn62x6fFw" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/VSeVhmW4_JQ" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/07aFaTf24Kg" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/DqyYTM7pR2o" alt="" />
-        </li>
-        <li className="photo-item">
-          <img src="https://source.unsplash.com/IdNOTjPeHrE" alt="" />
-        </li>
-      </ul>
+      {!isPhotosLoading ? (
+        <ul className="photo-gallery-list">
+          {PhotoData.photoset?.photo.map((photo: any, index: number) => (
+            <li key={index} className="photo-item">
+              <img
+                src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
+                alt={photo.id}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 }
