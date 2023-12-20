@@ -21,6 +21,7 @@ export default function PhotoGallery() {
               <img
                 src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.png`}
                 alt={photo.id}
+                loading="lazy"
               />
             </li>
           ))}
