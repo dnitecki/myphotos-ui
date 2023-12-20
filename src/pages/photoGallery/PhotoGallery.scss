@@ -7,9 +7,15 @@
   background-color: black;
   color: white;
 }
+.photo-gallery-background {
+  position: relative;
+  height: 100svh;
+  width: 100svw;
+  background-color: black;
+}
 .photo-gallery-header {
   display: flex;
-  width: 100%;
+  width: 100svw;
   height: 5rem;
   justify-content: center;
   align-items: center;
@@ -17,12 +23,13 @@
 .photo-gallery-list {
   margin-left: auto;
   margin-right: auto;
-  column-gap: 7px;
+  column-gap: 6px;
+  row-gap: 6px;
   padding: 0px 20px 20px 20px;
   box-sizing: border-box;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 .photo-item {
-  margin-bottom: 10px;
   img {
     width: 100%;
     border-radius: 5px;
@@ -50,5 +57,13 @@
   .photo-gallery-list {
     columns: 2;
     padding: 0px 10px 10px 10px;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

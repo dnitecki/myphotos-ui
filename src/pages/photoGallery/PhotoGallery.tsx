@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
 
 export default function PhotoGallery() {
-  const {
-    isLoading: isPhotosLoading,
-    error: isPhotoError,
-    data: PhotoData,
-  } = useQuery(["photoList"], getPhotosList);
-
-  console.log(PhotoData);
+  const { isLoading: isPhotosLoading, data: PhotoData } = useQuery(
+    ["photoList"],
+    getPhotosList
+  );
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  // const imagesLoaded = useOnLoadImages(wrapperRef);
 
   return (
-    <div className="photo-gallery-container">
+    <div className="photo-gallery-container" ref={wrapperRef}>
       <header className="photo-gallery-header">
         <h1>Dom's Snaps</h1>
       </header>
@@ -24,12 +23,13 @@ export default function PhotoGallery() {
               <img
                 src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.png`}
                 alt={photo.id}
-                loading="lazy"
               />
             </li>
           ))}
         </ul>
-      ) : null}
+      ) : (
+        <div className="photo-gallery-background" />
+      )}
     </div>
   );
 }
