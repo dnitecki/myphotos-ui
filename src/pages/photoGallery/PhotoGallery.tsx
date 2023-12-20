@@ -14,6 +14,9 @@ export default function PhotoGallery() {
 
   return (
     <div className="photo-gallery-container">
+      <header className="photo-gallery-header">
+        <h1>Dom's Snaps</h1>
+      </header>
       {!isPhotosLoading ? (
         <ul className="photo-gallery-list">
           {PhotoData.photoset?.photo.map((photo: any, index: number) => (
