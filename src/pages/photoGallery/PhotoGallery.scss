@@ -7,6 +7,12 @@
   background-color: black;
   color: white;
 }
+.photo-gallery-parallax {
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .photo-gallery-background {
   position: relative;
   height: 100svh;
@@ -16,9 +22,10 @@
 .photo-gallery-header {
   display: flex;
   width: 100svw;
-  height: 5rem;
+  height: 15rem;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 .photo-gallery-list {
   margin-left: auto;
@@ -29,6 +36,7 @@
   box-sizing: border-box;
   animation: fadeIn 2s ease-in-out forwards;
   position: relative;
+  z-index: 2;
 }
 .photo-item {
   img {
