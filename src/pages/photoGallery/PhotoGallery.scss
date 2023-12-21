@@ -28,10 +28,23 @@
   padding: 0px 20px 20px 20px;
   box-sizing: border-box;
   animation: fadeIn 2s ease-in-out forwards;
+  position: relative;
 }
 .photo-item {
   img {
     width: 100%;
+    border-radius: 5px;
+  }
+}
+.photo-item-details {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100svw;
+  img {
+    width: 100%;
+    height: auto;
     border-radius: 5px;
   }
 }
