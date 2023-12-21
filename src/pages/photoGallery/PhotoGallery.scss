@@ -8,11 +8,15 @@
   color: white;
 }
 .photo-gallery-parallax {
+  position: relative;
   z-index: 0;
-  display: flex;
-  flex-direction: column;
+  min-height: 75vh;
+  display: grid;
+  grid-template-areas: "stack";
 }
-
+.photo-gallery-parallax > * {
+  grid-area: stack;
+}
 .photo-gallery-background {
   position: relative;
   height: 100svh;
@@ -30,6 +34,7 @@
 .photo-gallery-list {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15rem;
   column-gap: 6px;
   row-gap: 6px;
   padding: 0px 20px 20px 20px;
