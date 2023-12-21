@@ -2,6 +2,7 @@
   position: absolute;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   height: fit-content;
   width: fit-content;
   background-color: black;
@@ -24,11 +25,14 @@
   background-color: black;
 }
 .photo-gallery-header {
+  position: fixed;
   display: flex;
   width: 100svw;
-  height: 15rem;
+  height: 100svh;
   justify-content: center;
-  align-items: center;
+  padding-top: 5rem;
+  align-items: flex-start;
+  overflow: hidden;
   z-index: 1;
 }
 .photo-gallery-list {
