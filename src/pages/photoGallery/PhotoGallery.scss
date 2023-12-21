@@ -39,7 +39,7 @@
   row-gap: 6px;
   padding: 0px 20px 20px 20px;
   box-sizing: border-box;
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
   position: relative;
   z-index: 2;
 }
@@ -51,15 +51,22 @@
 }
 .photo-item-details {
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
   width: 100svw;
+  height: 100svh;
+  background-color: black;
+  z-index: 3;
   img {
     width: 100%;
     height: auto;
     border-radius: 5px;
   }
+}
+.hidden {
+  display: none;
 }
 @media screen and (min-width: 1200px) {
   .photo-gallery-list {

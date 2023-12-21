@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
@@ -6,7 +6,6 @@ import { useQuery } from "react-query";
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState(false);
   const [image, setImage] = useState(null);
-  const parallaxRef = useRef(null);
 
   const { isLoading: isPhotosLoading, data: PhotoData } = useQuery(
     ["photoList"],
@@ -34,7 +33,11 @@ export default function PhotoGallery() {
   };
 
   const photoGallery = (
-    <div className="photo-gallery-parallax">
+    <div
+      className={
+        clicked ? "photo-gallery-parallax hidden" : "photo-gallery-parallax"
+      }
+    >
       <header className="photo-gallery-header">
         <h1>Dom's Snaps</h1>
       </header>
@@ -74,7 +77,8 @@ export default function PhotoGallery() {
   return (
     <>
       <div className="photo-gallery-container">
-        {clicked ? <>{imageDetails}</> : <>{photoGallery}</>}
+        {clicked ? <>{imageDetails}</> : null}
+        {photoGallery}
       </div>
     </>
   );
