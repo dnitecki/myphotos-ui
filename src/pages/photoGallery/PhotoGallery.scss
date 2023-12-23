@@ -18,6 +18,9 @@
 .photo-gallery-parallax > * {
   grid-area: stack;
 }
+.photo-gallery-parallax-hidden {
+  visibility: hidden;
+}
 .photo-gallery-background {
   position: relative;
   height: 100svh;
@@ -60,7 +63,7 @@
   align-items: flex-start;
   padding: 20px;
   width: 100svw;
-  height: 100svh;
+  height: 100lvh;
   background-color: black;
   z-index: 3;
   img {
@@ -69,9 +72,7 @@
     border-radius: 5px;
   }
 }
-.hidden {
-  display: none;
-}
+
 @media screen and (min-width: 1200px) {
   .photo-gallery-list {
     width: 70%;

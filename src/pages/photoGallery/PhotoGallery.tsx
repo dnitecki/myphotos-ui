@@ -35,7 +35,7 @@ export default function PhotoGallery() {
   const photoGallery = (
     <div
       className={
-        clicked ? "photo-gallery-parallax hidden" : "photo-gallery-parallax"
+        clicked ? "photo-gallery-parallax-hidden" : "photo-gallery-parallax"
       }
     >
       <header className="photo-gallery-header">
