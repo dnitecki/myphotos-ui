@@ -77,7 +77,9 @@ export default function PhotoGallery() {
   return (
     <>
       <div className="photo-gallery-container">
-        {clicked ? <>{imageDetails}</> : null}
+        {clicked ? (
+          <div className="photo-item-container">{imageDetails}</div>
+        ) : null}
         {photoGallery}
       </div>
     </>

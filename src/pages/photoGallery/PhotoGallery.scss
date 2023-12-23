@@ -20,6 +20,7 @@
 }
 .photo-gallery-parallax-hidden {
   visibility: hidden;
+  display: none;
 }
 .photo-gallery-background {
   position: relative;
@@ -56,16 +57,19 @@
     border-radius: 5px;
   }
 }
+.photo-item-container {
+  position: relative;
+  z-index: 0;
+  min-height: 75vh;
+}
 .photo-item-details {
   display: flex;
-  position: absolute;
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
   width: 100svw;
-  height: 100lvh;
+  min-height: 75vh;
   background-color: black;
-  z-index: 3;
   img {
     width: 100%;
     height: auto;
