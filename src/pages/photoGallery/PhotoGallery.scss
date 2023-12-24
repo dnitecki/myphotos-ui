@@ -7,6 +7,7 @@
   width: fit-content;
   background-color: black;
   color: white;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 .photo-gallery-parallax {
   position: relative;
@@ -34,21 +35,34 @@
   width: 100svw;
   height: 100svh;
   justify-content: center;
-  padding-top: 5rem;
   align-items: flex-start;
   overflow: hidden;
   z-index: 1;
+  .header-text {
+    position: absolute;
+    z-index: 2;
+    top: 8rem;
+  }
+  .header-image {
+    position: absolute;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 50%,
+      transparent 100%
+    );
+  }
 }
 .photo-gallery-list {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 15rem;
+  margin-top: 20rem;
   column-gap: 6px;
   row-gap: 6px;
-  padding: 0px 20px 20px 20px;
+  box-shadow: -5px -10px 30px black;
+  padding: 20px 20px 20px 20px;
   box-sizing: border-box;
-  animation: fadeIn 1s ease-in-out forwards;
   position: relative;
+  background-color: black;
   z-index: 2;
 }
 .photo-item {
@@ -98,7 +112,7 @@
 @media screen and (max-width: 599px) {
   .photo-gallery-list {
     columns: 2;
-    padding: 0px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
   }
 }
 @keyframes fadeIn {

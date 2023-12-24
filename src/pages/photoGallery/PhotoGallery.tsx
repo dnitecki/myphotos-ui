@@ -39,7 +39,12 @@ export default function PhotoGallery() {
       }
     >
       <header className="photo-gallery-header">
-        <h1>Dom's Snaps</h1>
+        <h1 className="header-text">Dom's Snaps</h1>
+        <img
+          className="header-image"
+          src="https://farm66.staticflickr.com/65535/53406868026_1b0e9f7d53.png"
+          alt="header"
+        />
       </header>
       {!isPhotosLoading ? (
         <ul className="photo-gallery-list">
