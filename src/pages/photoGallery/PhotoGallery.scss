@@ -2,8 +2,8 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  height: fit-content;
+  overflow: hidden;
+  height: 100svh;
   width: fit-content;
   background-color: black;
   color: white;
@@ -11,17 +11,17 @@
 }
 .photo-gallery-parallax {
   position: relative;
-  z-index: 0;
+  z-index: 2;
   min-height: 75vh;
   display: grid;
   grid-template-areas: "stack";
+  overflow: auto;
 }
 .photo-gallery-parallax > * {
   grid-area: stack;
 }
 .photo-gallery-parallax-hidden {
   visibility: hidden;
-  display: none;
 }
 .photo-gallery-background {
   position: relative;
@@ -76,9 +76,11 @@
   }
 }
 .photo-item-container {
-  position: relative;
+  position: absolute;
   z-index: 0;
-  min-height: 75vh;
+  display: flex;
+  height: 100%;
+  overflow: auto;
 }
 .photo-item-details {
   display: flex;
@@ -86,7 +88,7 @@
   align-items: flex-start;
   padding: 20px;
   width: 100svw;
-  min-height: 75vh;
+  height: fit-content;
   background-color: black;
   img {
     width: 100%;
