@@ -45,7 +45,13 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
-    top: 8rem;
+    top: 4rem;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 25px;
   }
   .header-image {
     position: absolute;
@@ -55,6 +61,28 @@
       rgba(0, 0, 0, 1) 50%,
       transparent 100%
     );
+  }
+  .header-links {
+    display: flex;
+    z-index: 1;
+    margin-top: 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+    column-gap: 2rem;
+    color: rgb(252, 252, 252);
+    font-size: 30px;
+    background-color: rgba(110, 110, 110, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+  }
+  .header-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .my-logo {
+    display: flex;
+    height: 2rem;
+    width: auto;
   }
 }
 .photo-gallery-list {

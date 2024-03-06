@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
+import { faFlickr } from "@fortawesome/free-brands-svg-icons/faFlickr";
+import { faShareNodes } from "@fortawesome/free-solid-svg-icons/faShareNodes";
+import myLogo from "../../assets/MyLogo.png";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState(false);
@@ -42,6 +47,20 @@ export default function PhotoGallery() {
         <div className="header-text">
           <h1>Dom's</h1>
           <h2>Photo Library</h2>
+          <div className="header-links">
+            <div className="header-link">
+              <FontAwesomeIcon icon={faInstagram} />
+            </div>
+            <div className="header-link">
+              <FontAwesomeIcon icon={faFlickr} />
+            </div>
+            <div className="header-link">
+              <FontAwesomeIcon icon={faShareNodes} />
+            </div>
+            <div className="header-link">
+              <img className="my-logo" src={myLogo} alt="my logo" />
+            </div>
+          </div>
         </div>
 
         <img
