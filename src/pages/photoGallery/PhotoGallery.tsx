@@ -100,8 +100,8 @@ export default function PhotoGallery() {
 
   const imageDetails = (
     <>
-      <div className="photo-item-details" onClick={resetClick}>
-        {image}
+      <div className="photo-item-details">
+        <div onClick={resetClick}>{image}</div>
         <PhotoDetails image={image} />
       </div>
     </>
