@@ -29,22 +29,31 @@ export default function PhotoDetails({ image }: any) {
   return (
     <>
       <div className="photo-details-container">
+        <br />
         <h1>Photo Details</h1>
         {isLoading ? (
           "Loading map..."
         ) : (
           <>
             {!isError ? (
-              <MapContainer
-                center={latLong}
-                zoom={8}
-                scrollWheelZoom={false}
-                attributionControl={false}
-                zoomControl={false}
-              >
-                <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
-                <Marker position={latLong} icon={markerIcon}></Marker>
-              </MapContainer>
+              <>
+                <MapContainer
+                  center={latLong}
+                  zoom={8}
+                  scrollWheelZoom={false}
+                  attributionControl={false}
+                  zoomControl={false}
+                  dragging={false}
+                >
+                  <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
+                  <Marker position={latLong} icon={markerIcon}></Marker>
+                </MapContainer>
+                <p>
+                  Latitude: {latitude}
+                  <br />
+                  Longitude: {longitude}
+                </p>
+              </>
             ) : (
               "No Geographic data available"
             )}

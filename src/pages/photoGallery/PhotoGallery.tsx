@@ -67,10 +67,10 @@ export default function PhotoGallery() {
               <FontAwesomeIcon icon={faFlickr} />
             </div>
             <div className="header-link">
-              <FontAwesomeIcon icon={faShareNodes} />
+              <img className="my-logo" src={myLogo} alt="my logo" />
             </div>
             <div className="header-link">
-              <img className="my-logo" src={myLogo} alt="my logo" />
+              <FontAwesomeIcon icon={faShareNodes} />
             </div>
           </div>
         </div>
