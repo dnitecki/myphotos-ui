@@ -122,10 +122,14 @@
   width: 100svw;
   height: fit-content;
   background-color: black;
-  img {
+  .photo-item-image {
+    display: flex;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
   }
 }
 

@@ -13,10 +13,11 @@ export default function PhotoDetails({ image }: any) {
     iconUrl: markerIconPng,
   });
 
-  const { isLoading, data: locationData } = useQuery(
-    ["photoLocation", photoId],
-    () => getPhotoLocation(photoId)
-  );
+  const {
+    isError,
+    isLoading,
+    data: locationData,
+  } = useQuery(["photoLocation", photoId], () => getPhotoLocation(photoId));
 
   const latitude = Number(locationData?.latitude);
   const longitude = Number(locationData?.longitude);
@@ -28,13 +29,26 @@ export default function PhotoDetails({ image }: any) {
   return (
     <>
       <div className="photo-details-container">
+        <h1>Photo Details</h1>
         {isLoading ? (
-          ""
+          "Loading map..."
         ) : (
-          <MapContainer center={latLong} zoom={8} scrollWheelZoom={false}>
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={latLong} icon={markerIcon}></Marker>
-          </MapContainer>
+          <>
+            {!isError ? (
+              <MapContainer
+                center={latLong}
+                zoom={8}
+                scrollWheelZoom={false}
+                attributionControl={false}
+                zoomControl={false}
+              >
+                <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
+                <Marker position={latLong} icon={markerIcon}></Marker>
+              </MapContainer>
+            ) : (
+              "No Geographic data available"
+            )}
+          </>
         )}
       </div>
     </>

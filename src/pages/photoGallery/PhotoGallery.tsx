@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
@@ -12,6 +12,7 @@ import PhotoDetails from "../photoDetails/PhotoDetails";
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState(null);
+  const [scrollY, setScrollY] = useState(0);
 
   const { isLoading: isPhotosLoading, data: PhotoData } = useQuery(
     ["photoList"],
@@ -20,6 +21,10 @@ export default function PhotoGallery() {
 
   const resetClick = () => {
     setClicked(!clicked);
+  };
+
+  const handleScroll = (event: any) => {
+    setScrollY(event.currentTarget.scrollTop);
   };
 
   const imageClickHandler = (
@@ -42,11 +47,15 @@ export default function PhotoGallery() {
 
   const photoGallery = (
     <div
+      onScroll={handleScroll}
       className={
         clicked ? "photo-gallery-parallax-hidden" : "photo-gallery-parallax"
       }
     >
-      <header className="photo-gallery-header">
+      <header
+        className="photo-gallery-header"
+        style={{ opacity: `${1 - scrollY / 700}` }}
+      >
         <div className="header-text">
           <h1>Dom's</h1>
           <h2>Photo Library</h2>
@@ -101,7 +110,9 @@ export default function PhotoGallery() {
   const imageDetails = (
     <>
       <div className="photo-item-details">
-        <div onClick={resetClick}>{image}</div>
+        <div className="photo-item-image" onClick={resetClick}>
+          {image}
+        </div>
         <PhotoDetails image={image} />
       </div>
     </>
