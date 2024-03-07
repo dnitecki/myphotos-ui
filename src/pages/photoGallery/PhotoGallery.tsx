@@ -54,7 +54,7 @@ export default function PhotoGallery() {
     >
       <header
         className="photo-gallery-header"
-        style={{ opacity: `${1 - scrollY / 700}` }}
+        style={{ opacity: `${1 - scrollY / 500}` }}
       >
         <div className="header-text">
           <h1>Dom's</h1>
