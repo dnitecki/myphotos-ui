@@ -7,9 +7,10 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { faFlickr } from "@fortawesome/free-brands-svg-icons/faFlickr";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons/faShareNodes";
 import myLogo from "../../assets/MyLogo.png";
+import PhotoDetails from "../photoDetails/PhotoDetails";
 
 export default function PhotoGallery() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState(null);
 
   const { isLoading: isPhotosLoading, data: PhotoData } = useQuery(
@@ -25,12 +26,14 @@ export default function PhotoGallery() {
     farm: string,
     server: string,
     id: string,
-    secret: any
+    secret: any,
+    title: string
   ) => {
     const image: JSX.Element = (
       <img
         src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.png`}
-        alt={id}
+        alt={title}
+        itemID={id}
       />
     );
     setClicked(!clicked);
@@ -81,7 +84,8 @@ export default function PhotoGallery() {
                     photo.farm,
                     photo.server,
                     photo.id,
-                    photo.secret
+                    photo.secret,
+                    photo.title
                   )
                 }
               />
@@ -98,6 +102,7 @@ export default function PhotoGallery() {
     <>
       <div className="photo-item-details" onClick={resetClick}>
         {image}
+        <PhotoDetails image={image} />
       </div>
     </>
   );

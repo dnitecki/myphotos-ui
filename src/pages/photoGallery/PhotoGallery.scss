@@ -89,8 +89,8 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 20rem;
-  column-gap: 6px;
-  row-gap: 6px;
+  column-gap: 10px;
+  row-gap: 10px;
   box-shadow: -5px -10px 30px black;
   padding: 20px 20px 20px 20px;
   box-sizing: border-box;
@@ -101,7 +101,8 @@
 .photo-item {
   img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-bottom: 4px;
   }
 }
 .photo-item-container {
@@ -113,6 +114,8 @@
 }
 .photo-item-details {
   display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
