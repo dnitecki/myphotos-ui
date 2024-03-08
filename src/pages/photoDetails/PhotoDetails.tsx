@@ -10,10 +10,8 @@ import "./PhotoDetails.scss";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationCrosshairs,
-  faMapPin,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons/faLocationCrosshairs";
+import { faMapPin } from "@fortawesome/free-solid-svg-icons/faMapPin";
 
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
