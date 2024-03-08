@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { faFlickr } from "@fortawesome/free-brands-svg-icons/faFlickr";
-import { faShareNodes } from "@fortawesome/free-solid-svg-icons/faShareNodes";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons/faArrowLeftLong";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 import myLogo from "../../assets/MyLogo.png";
 import PhotoDetails from "../photoDetails/PhotoDetails";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState(null);
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollY, setScrollY] = useState<number>(0);
 
   const { isLoading: isPhotosLoading, data: PhotoData } = useQuery(
     ["photoList"],
     getPhotosList
   );
+
+  const shareData = {
+    text: "Thanks for sharing!",
+    url: "https://photos.dominicknitecki.com",
+  };
 
   const resetClick = () => {
     setClicked(!clicked);
@@ -27,6 +33,13 @@ export default function PhotoGallery() {
     setScrollY(event.currentTarget.scrollTop);
   };
 
+  const handleShare = async () => {
+    try {
+      await navigator.share(shareData);
+    } catch (error) {
+      window.alert(error);
+    }
+  };
   const imageClickHandler = (
     farm: string,
     server: string,
@@ -61,16 +74,34 @@ export default function PhotoGallery() {
           <h2>Photo Library</h2>
           <div className="header-links">
             <div className="header-link">
-              <FontAwesomeIcon icon={faInstagram} />
+              <a
+                href="https://www.instagram.com/dominick_nitecki/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
             </div>
             <div className="header-link">
-              <FontAwesomeIcon icon={faFlickr} />
+              <a
+                href="https://www.flickr.com/photos/199729283@N07/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon icon={faFlickr} />
+              </a>
             </div>
             <div className="header-link">
-              <img className="my-logo" src={myLogo} alt="my logo" />
+              <a
+                href="https://www.dominicknitecki.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img className="my-logo" src={myLogo} alt="my logo" />
+              </a>
             </div>
-            <div className="header-link">
-              <FontAwesomeIcon icon={faShareNodes} />
+            <div className="header-link" onClick={handleShare}>
+              <FontAwesomeIcon icon={faPaperPlane} />
             </div>
           </div>
         </div>
@@ -110,9 +141,10 @@ export default function PhotoGallery() {
   const imageDetails = (
     <>
       <div className="photo-item-details">
-        <div className="photo-item-image" onClick={resetClick}>
-          {image}
+        <div className="photo-back-button">
+          <FontAwesomeIcon icon={faArrowLeftLong} onClick={resetClick} />
         </div>
+        <div className="photo-item-image">{image}</div>
         <PhotoDetails image={image} />
       </div>
     </>
