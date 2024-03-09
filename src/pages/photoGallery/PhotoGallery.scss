@@ -66,16 +66,26 @@
     display: flex;
     z-index: 1;
     margin-top: 2rem;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem;
     column-gap: 2rem;
     color: rgb(252, 252, 252);
-    font-size: 30px;
+    font-size: 35px;
     border-radius: 50px;
+    justify-content: center;
+    align-items: center;
   }
   .header-link {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: fit-content;
+    a {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .my-logo {
     display: flex;
@@ -128,6 +138,14 @@
       height: auto;
       border-radius: 10px;
     }
+  }
+  .photo-item-links {
+    display: flex;
+    font-size: 25px;
+    width: 100%;
+    column-gap: 0.5rem;
+    justify-content: flex-end;
+    align-items: center;
   }
   .photo-back-button {
     display: flex;

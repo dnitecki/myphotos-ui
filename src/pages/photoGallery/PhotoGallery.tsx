@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
-import { faFlickr } from "@fortawesome/free-brands-svg-icons/faFlickr";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons/faArrowLeftLong";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 import myLogo from "../../assets/MyLogo.png";
 import PhotoDetails from "../photoDetails/PhotoDetails";
+import { FaInstagram } from "react-icons/fa";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { ImFlickr2 } from "react-icons/im";
+import { PiShareFatFill } from "react-icons/pi";
+import { HiDownload } from "react-icons/hi";
+import { RxEnterFullScreen } from "react-icons/rx";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -36,9 +37,7 @@ export default function PhotoGallery() {
   const handleShare = async () => {
     try {
       await navigator.share(shareData);
-    } catch (error) {
-      window.alert(error);
-    }
+    } catch (error) {}
   };
   const imageClickHandler = (
     farm: string,
@@ -79,7 +78,7 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faInstagram} />
+                <FaInstagram />
               </a>
             </div>
             <div className="header-link">
@@ -88,7 +87,7 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faFlickr} />
+                <ImFlickr2 />
               </a>
             </div>
             <div className="header-link">
@@ -101,7 +100,7 @@ export default function PhotoGallery() {
               </a>
             </div>
             <div className="header-link" onClick={handleShare}>
-              <FontAwesomeIcon icon={faPaperPlane} />
+              <PiShareFatFill />
             </div>
           </div>
         </div>
@@ -142,9 +141,13 @@ export default function PhotoGallery() {
     <>
       <div className="photo-item-details">
         <div className="photo-back-button">
-          <FontAwesomeIcon icon={faArrowLeftLong} onClick={resetClick} />
+          <FaArrowLeftLong onClick={resetClick} />
         </div>
         <div className="photo-item-image">{image}</div>
+        <div className="photo-item-links">
+          <RxEnterFullScreen />
+          <HiDownload />
+        </div>
         <PhotoDetails image={image} />
       </div>
     </>

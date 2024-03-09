@@ -9,9 +9,8 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "./PhotoDetails.scss";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons/faLocationCrosshairs";
-import { faMapPin } from "@fortawesome/free-solid-svg-icons/faMapPin";
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { FaMapPin } from "react-icons/fa";
 
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
@@ -38,9 +37,9 @@ export default function PhotoDetails({ image }: any) {
     lng: longitude,
   };
   const locationDataList = [
-    { icon: faLocationCrosshairs, value: `${latitude}, ${longitude}` },
+    { icon: FaLocationCrosshairs, value: `${latitude}, ${longitude}` },
     {
-      icon: faMapPin,
+      icon: FaMapPin,
       value: `${locationData?.locality._content}, ${locationData?.region._content}, ${locationData?.country._content}.`,
     },
   ];
@@ -48,7 +47,6 @@ export default function PhotoDetails({ image }: any) {
   return (
     <>
       <div className="photo-details-container">
-        <br />
         <h1>Photo Details</h1>
         {isLocationLoading ? (
           "Loading map..."
@@ -75,8 +73,8 @@ export default function PhotoDetails({ image }: any) {
                 >
                   {locationDataList.map((item, index) => (
                     <li key={index} className="location-details-item">
-                      <FontAwesomeIcon className="icon" icon={item.icon} />
-                      <h3 className="value">{item.value}</h3>
+                      <item.icon className="icon" />
+                      <h4 className="value">{item.value}</h4>
                     </li>
                   ))}
                 </ul>
@@ -86,6 +84,8 @@ export default function PhotoDetails({ image }: any) {
             )}
           </>
         )}
+        <hr />
+        <>{!isExifError ? <div>{isExifLoading}</div> : ""}</>
       </div>
     </>
   );
