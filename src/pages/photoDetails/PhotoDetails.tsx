@@ -9,8 +9,8 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "./PhotoDetails.scss";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { FaLocationCrosshairs } from "react-icons/fa6";
-import { FaMapPin } from "react-icons/fa";
+import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
@@ -37,9 +37,9 @@ export default function PhotoDetails({ image }: any) {
     lng: longitude,
   };
   const locationDataList = [
-    { icon: FaLocationCrosshairs, value: `${latitude}, ${longitude}` },
+    { icon: MyLocationRoundedIcon, value: `${latitude}, ${longitude}` },
     {
-      icon: FaMapPin,
+      icon: LocationOnRoundedIcon,
       value: `${locationData?.locality._content}, ${locationData?.region._content}, ${locationData?.country._content}.`,
     },
   ];

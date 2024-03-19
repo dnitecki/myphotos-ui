@@ -4,12 +4,12 @@ import { getPhotosList } from "../../services/photoService";
 import { useQuery } from "react-query";
 import myLogo from "../../assets/MyLogo.png";
 import PhotoDetails from "../photoDetails/PhotoDetails";
-import { FaInstagram } from "react-icons/fa";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { ImFlickr2 } from "react-icons/im";
-import { PiShareFatFill } from "react-icons/pi";
-import { HiDownload } from "react-icons/hi";
-import { RxEnterFullScreen } from "react-icons/rx";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
+import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
+import WestRoundedIcon from "@mui/icons-material/WestRounded";
+import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
+import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -78,7 +78,7 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaInstagram />
+                <InstagramIcon />
               </a>
             </div>
             <div className="header-link">
@@ -87,7 +87,7 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <ImFlickr2 />
+                <PhotoLibraryRoundedIcon />
               </a>
             </div>
             <div className="header-link">
@@ -100,7 +100,7 @@ export default function PhotoGallery() {
               </a>
             </div>
             <div className="header-link" onClick={handleShare}>
-              <PiShareFatFill />
+              <ShareRoundedIcon />
             </div>
           </div>
         </div>
@@ -141,12 +141,12 @@ export default function PhotoGallery() {
     <>
       <div className="photo-item-details">
         <div className="photo-back-button">
-          <FaArrowLeftLong onClick={resetClick} />
+          <WestRoundedIcon onClick={resetClick} />
         </div>
         <div className="photo-item-image">{image}</div>
         <div className="photo-item-links">
-          <RxEnterFullScreen />
-          <HiDownload />
+          <FullscreenRoundedIcon />
+          <DownloadRoundedIcon />
         </div>
         <PhotoDetails image={image} />
       </div>
