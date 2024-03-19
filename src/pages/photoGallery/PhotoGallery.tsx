@@ -78,7 +78,7 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <InstagramIcon />
+                <InstagramIcon fontSize="inherit" />
               </a>
             </div>
             <div className="header-link">
@@ -87,7 +87,7 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <PhotoLibraryRoundedIcon />
+                <PhotoLibraryRoundedIcon fontSize="inherit" />
               </a>
             </div>
             <div className="header-link">
@@ -100,7 +100,7 @@ export default function PhotoGallery() {
               </a>
             </div>
             <div className="header-link" onClick={handleShare}>
-              <ShareRoundedIcon />
+              <ShareRoundedIcon fontSize="inherit" />
             </div>
           </div>
         </div>
@@ -141,12 +141,12 @@ export default function PhotoGallery() {
     <>
       <div className="photo-item-details">
         <div className="photo-back-button">
-          <WestRoundedIcon onClick={resetClick} />
+          <WestRoundedIcon fontSize="inherit" onClick={resetClick} />
         </div>
         <div className="photo-item-image">{image}</div>
         <div className="photo-item-links">
-          <FullscreenRoundedIcon />
-          <DownloadRoundedIcon />
+          <FullscreenRoundedIcon fontSize="inherit" />
+          <DownloadRoundedIcon fontSize="inherit" />
         </div>
         <PhotoDetails image={image} />
       </div>
