@@ -5,7 +5,7 @@
   height: fit-content;
   width: 100%;
   hr {
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 1rem 0rem 1rem 0rem;
   }
 }
 .location-details-list {
@@ -17,6 +17,26 @@
   row-gap: 0.5rem;
 }
 .location-details-item {
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+  .icon {
+    display: flex;
+    font-size: 20px;
+  }
+  .value {
+    display: flex;
+  }
+}
+.attribute-list {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+.attribute-item {
   display: flex;
   column-gap: 0.5rem;
   align-items: center;

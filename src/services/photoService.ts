@@ -1,6 +1,8 @@
 import { BASE_URL, FLIKR_CREDS } from "../utils/secrets";
 import axios from "axios";
-import { API_METHODS } from "../utils/constants";
+import { API_METHODS, EXIF_ATTRIBUTES } from "../utils/constants";
+import { ExifType } from "../types/Types";
+import { configureExifList, configureLocationList } from "../utils/photoUtils";
 
 const { API_KEY, USER_ID, PHOTOSET_ID } = FLIKR_CREDS;
 
@@ -17,7 +19,9 @@ export const getPhotosLocation = async (PHOTO_ID: string) => {
   const result = await axios.get(url, {
     headers: { "Content-Type": "application/json" },
   });
-  return result.data.photo.location;
+  const locationData = result.data.photo.location;
+  const { latLong, locationDataList } = configureLocationList(locationData);
+  return { latLong, locationDataList };
 };
 
 export const getExifData = async (PHOTO_ID: string) => {
@@ -25,5 +29,20 @@ export const getExifData = async (PHOTO_ID: string) => {
   const result = await axios.get(url, {
     headers: { "Content-Type": "application/json" },
   });
-  return result.data;
+  const exifData: ExifType[] = result.data.photo.exif;
+  const filteredExifData = exifData.filter((attribute) =>
+    EXIF_ATTRIBUTES.includes(attribute.tag)
+  );
+  return configureExifList(filteredExifData);
+};
+
+export const getOriginalPhotoUrl = async (PHOTO_ID: string) => {
+  const url = `${BASE_URL}?method=${API_METHODS.GET_SIZE}&api_key=${API_KEY}&photo_id=${PHOTO_ID}&format=json&nojsoncallback=1`;
+  const result = await axios.get(url, {
+    headers: { "Content-Type": "application/json" },
+  });
+  const sizeList = result.data.sizes.size.filter(
+    (sizes: { label: string }) => sizes.label === "Original"
+  );
+  return sizeList[0];
 };
