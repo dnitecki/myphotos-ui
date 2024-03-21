@@ -68,5 +68,5 @@ export const saveImage = async (photoId: string) => {
 
 export const requestFullImage = async (photoId: string) => {
   const imageSizes: any = await getOriginalPhotoUrl(photoId);
-  window.open(imageSizes.source, "_blank").focus();
+  window.location.assign(imageSizes.source);
 };
