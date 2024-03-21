@@ -118,12 +118,22 @@
 }
 .photo-item-container {
   position: absolute;
-  z-index: 0;
   display: flex;
   height: 100%;
   width: 100%;
+  background-color: black;
   overflow: auto;
   justify-content: center;
+  transition: all 0.4s ease-in-out;
+  z-index: 3;
+}
+.show {
+  transform: translateX(0);
+}
+.hide {
+  transform: translateX(500px);
+  opacity: 0;
+  visibility: hidden;
 }
 .photo-item-details {
   display: flex;
@@ -134,7 +144,6 @@
   padding: 20px;
   width: 100svw;
   height: fit-content;
-  background-color: black;
   .photo-item-image {
     display: flex;
     width: 100%;
@@ -146,15 +155,17 @@
   }
   .photo-item-links {
     display: flex;
-    font-size: 40px;
+    font-size: 35px;
     width: 100%;
     column-gap: 0.5rem;
     justify-content: flex-end;
     align-items: center;
+    cursor: pointer;
   }
   .photo-back-button {
     display: flex;
     font-size: 40px;
+    cursor: pointer;
   }
 }
 @media screen and (min-width: 1200px) {

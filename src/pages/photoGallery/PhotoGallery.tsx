@@ -59,12 +59,7 @@ export default function PhotoGallery() {
   };
 
   const photoGallery = (
-    <div
-      onScroll={handleScroll}
-      className={
-        clicked ? "photo-gallery-parallax-hidden" : "photo-gallery-parallax"
-      }
-    >
+    <div onScroll={handleScroll} className="photo-gallery-parallax">
       <header
         className="photo-gallery-header"
         style={{ opacity: `${1 - scrollY / 500}` }}
@@ -165,9 +160,9 @@ export default function PhotoGallery() {
   return (
     <>
       <div className="photo-gallery-container">
-        {clicked ? (
-          <div className="photo-item-container">{imageDetails}</div>
-        ) : null}
+        <div className={`photo-item-container ${clicked ? "show" : "hide"}`}>
+          {imageDetails}
+        </div>
         {photoGallery}
       </div>
     </>
