@@ -7,7 +7,6 @@ import ShutterSpeedRoundedIcon from "@mui/icons-material/ShutterSpeedRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import VideocamRoundedIcon from "@mui/icons-material/VideocamRounded";
-import { getOriginalPhotoUrl } from "../services/photoService";
 
 export const configureExifList = (exifData: ExifType[]) => {
   const make = exifData.filter((attribute) => attribute.tag === "Make");
