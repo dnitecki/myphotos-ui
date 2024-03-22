@@ -8,6 +8,23 @@
     margin: 1rem 0rem 1rem 0rem;
   }
 }
+.photo-item-drawer {
+  display: flex;
+  width: 100%;
+}
+.photo-item-size {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.photo-item-links {
+  display: flex;
+  font-size: 35px;
+  width: fit-content;
+  justify-content: end;
+  column-gap: 0.5rem;
+  cursor: pointer;
+}
 .location-details-list {
   justify-content: center;
   display: flex;

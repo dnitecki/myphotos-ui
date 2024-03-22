@@ -8,9 +8,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
 import WestRoundedIcon from "@mui/icons-material/WestRounded";
-import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
-import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
-import { requestFullImage, saveImage } from "../../utils/photoUtils";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -141,16 +138,6 @@ export default function PhotoGallery() {
         </div>
         <div className="photo-item-image" id="selected-image">
           {image}
-        </div>
-        <div className="photo-item-links">
-          <FullscreenRoundedIcon
-            fontSize="inherit"
-            onClick={() => requestFullImage(image.props.itemID)}
-          />
-          <DownloadRoundedIcon
-            fontSize="inherit"
-            onClick={() => saveImage(image.props.itemID)}
-          />
         </div>
         <PhotoDetails image={image} />
       </div>

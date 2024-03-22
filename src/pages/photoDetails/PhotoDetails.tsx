@@ -1,6 +1,7 @@
 import React from "react";
 import {
   getExifData,
+  getOriginalPhotoUrl,
   getPhotosLocation as getPhotoLocation,
 } from "../../services/photoService";
 import { useQuery } from "react-query";
@@ -9,6 +10,9 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "./PhotoDetails.scss";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
+import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
+import { requestFullImage, saveImage } from "../../utils/photoUtils";
 
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
@@ -28,10 +32,31 @@ export default function PhotoDetails({ image }: any) {
     data: exifData,
   } = useQuery(["photoExif", photoId], () => getExifData(photoId));
 
+  const { data: sizeData } = useQuery(["photoSize", photoId], () =>
+    getOriginalPhotoUrl(photoId)
+  );
+
   return (
     <>
+      <div className="photo-item-drawer">
+        <div className="photo-item-size">
+          <p>
+            Original ({sizeData?.width} &times; {sizeData?.height})
+          </p>
+        </div>
+        <div className="photo-item-links">
+          <FullscreenRoundedIcon
+            fontSize="inherit"
+            onClick={() => requestFullImage(photoId)}
+          />
+          <DownloadRoundedIcon
+            fontSize="inherit"
+            onClick={() => saveImage(photoId)}
+          />
+        </div>
+      </div>
+      <h1>Photo Details</h1>
       <div className="photo-details-container">
-        <h1>Photo Details</h1>
         {isLocationLoading ? (
           <div>Loading...</div>
         ) : (

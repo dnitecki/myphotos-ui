@@ -1,12 +1,12 @@
 import { ExifType } from "../types/Types";
 import { saveAs } from "file-saver";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
-import CameraEnhanceRoundedIcon from "@mui/icons-material/CameraEnhanceRounded";
 import CameraRoundedIcon from "@mui/icons-material/CameraRounded";
 import IsoRoundedIcon from "@mui/icons-material/IsoRounded";
 import ShutterSpeedRoundedIcon from "@mui/icons-material/ShutterSpeedRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import VideocamRoundedIcon from "@mui/icons-material/VideocamRounded";
 import { getOriginalPhotoUrl } from "../services/photoService";
 
 export const configureExifList = (exifData: ExifType[]) => {
@@ -37,7 +37,7 @@ export const configureExifList = (exifData: ExifType[]) => {
       value: `ISO ${iso[0].raw._content}`,
     },
     {
-      icon: CameraEnhanceRoundedIcon,
+      icon: VideocamRoundedIcon,
       value: lensInfo[0].raw._content,
     },
   ];
