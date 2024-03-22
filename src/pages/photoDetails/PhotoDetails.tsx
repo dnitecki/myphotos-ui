@@ -47,11 +47,11 @@ export default function PhotoDetails({ image }: any) {
         <div className="photo-item-links">
           <FullscreenRoundedIcon
             fontSize="inherit"
-            onClick={() => requestFullImage(photoId)}
+            onClick={() => requestFullImage(sizeData.source)}
           />
           <DownloadRoundedIcon
             fontSize="inherit"
-            onClick={() => saveImage(photoId)}
+            onClick={() => saveImage(sizeData.source)}
           />
         </div>
       </div>

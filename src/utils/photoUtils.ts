@@ -61,12 +61,10 @@ export const configureLocationList = (locationData: any) => {
   return { latLong: latLong, locationDataList: locationDataList };
 };
 
-export const saveImage = async (photoId: string) => {
-  const imageSizes: any = await getOriginalPhotoUrl(photoId);
-  return saveAs(imageSizes.source, imageSizes.source);
+export const saveImage = (source: string) => {
+  return saveAs(source, source);
 };
 
-export const requestFullImage = async (photoId: string) => {
-  const imageSizes: any = await getOriginalPhotoUrl(photoId);
-  window.location.assign(imageSizes.source);
+export const requestFullImage = (source: string) => {
+  window.location.assign(source);
 };
