@@ -2,7 +2,7 @@ import { BASE_URL, FLIKR_CREDS } from "../utils/secrets";
 import axios from "axios";
 import { API_METHODS, EXIF_ATTRIBUTES } from "../utils/constants";
 import { ExifType } from "../types/Types";
-import { configureExifList, configureLocationList } from "../utils/photoUtils";
+import { configureExifList } from "../utils/photoUtils";
 
 const { API_KEY, USER_ID, PHOTOSET_ID } = FLIKR_CREDS;
 

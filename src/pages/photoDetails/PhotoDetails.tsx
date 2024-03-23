@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   getExifData,
   getOriginalPhotoUrl,
@@ -6,8 +6,8 @@ import {
 } from "../../services/photoService";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useQuery } from "@tanstack/react-query";
-import DNLogo from "../../assets/DNLogo.png";
 import "./PhotoDetails.scss";
+import DNLogo from "../../assets/DNLogo.png";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
@@ -19,11 +19,15 @@ import {
 } from "../../utils/photoUtils";
 
 export default function PhotoDetails({ image }: any) {
+  const mapMarker = useMemo(() => {
+    const markerIcon = new L.Icon({
+      iconSize: [35, 35],
+      iconUrl: DNLogo,
+    });
+    return markerIcon;
+  }, []);
+
   const photoId = image?.props?.itemID;
-  const markerIcon = new L.Icon({
-    iconSize: [35, 35],
-    iconUrl: DNLogo,
-  });
 
   const {
     isError: isLocationError,
@@ -87,7 +91,7 @@ export default function PhotoDetails({ image }: any) {
                     dragging={false}
                   >
                     <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
-                    <Marker position={latLong} icon={markerIcon}></Marker>
+                    <Marker position={latLong} icon={mapMarker}></Marker>
                   </MapContainer>
                 </div>
                 <ul
