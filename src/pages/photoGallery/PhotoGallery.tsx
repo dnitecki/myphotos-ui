@@ -21,7 +21,7 @@ export default function PhotoGallery() {
   });
 
   const shareData = {
-    text: "Thanks for sharing!",
+    text: "Check out some of my photos :)",
     url: "https://photos.dominicknitecki.com",
   };
 
