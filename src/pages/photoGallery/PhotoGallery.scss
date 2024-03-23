@@ -48,6 +48,17 @@
     justify-content: center;
     z-index: 2;
     top: 4rem;
+    .header-signature {
+      display: flex;
+      width: 15rem;
+      height: auto;
+      img {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        filter: invert(100%);
+      }
+    }
   }
   h1 {
     font-size: 50px;

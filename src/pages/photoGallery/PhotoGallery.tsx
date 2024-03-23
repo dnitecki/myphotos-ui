@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import myLogo from "../../assets/MyLogo.png";
+import mySignature from "../../assets/DomSignature.png";
 import PhotoDetails from "../photoDetails/PhotoDetails";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
@@ -62,7 +63,9 @@ export default function PhotoGallery() {
         style={{ opacity: `${1 - scrollY / 500}` }}
       >
         <div className="header-text">
-          <h1>Dom's</h1>
+          <div className="header-signature">
+            <img src={mySignature} alt="Dom's" />
+          </div>
           <h2>Photo Library</h2>
           <div className="header-links">
             <div className="header-link">
