@@ -5,7 +5,7 @@ import {
   getPhotosLocation as getPhotoLocation,
 } from "../../services/photoService";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import DNLogo from "../../assets/DNLogo.png";
 import "./PhotoDetails.scss";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -21,7 +21,8 @@ import { useQuery } from "@tanstack/react-query";
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
   const markerIcon = new L.Icon({
-    iconUrl: markerIconPng,
+    iconSize: [35, 35],
+    iconUrl: DNLogo,
   });
 
   const {
