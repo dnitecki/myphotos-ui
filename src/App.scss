@@ -108,3 +108,10 @@ a {
   height: 100%;
   border-radius: 10px;
 }
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  -webkit-filter: hue-rotate(180deg) invert(100%);
+  filter: hue-rotate(180deg) invert(100%);
+}
