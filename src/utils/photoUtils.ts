@@ -56,9 +56,7 @@ export const configureLocationList = (locationData: any) => {
       icon: LocationOnRoundedIcon,
       value: `${
         locationData?.locality?._content ?? locationData?.county?._content
-      }, ${locationData?.region?._content}, ${
-        locationData?.country?._content
-      }.`,
+      }, ${locationData?.region?._content}, ${locationData?.country?._content}`,
     },
   ];
   return { latLong: latLong, locationDataList: locationDataList };
