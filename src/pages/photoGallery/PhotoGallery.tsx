@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
-import { useQuery } from "react-query";
 import myLogo from "../../assets/MyLogo.png";
 import PhotoDetails from "../photoDetails/PhotoDetails";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
 import WestRoundedIcon from "@mui/icons-material/WestRounded";
+import { useQuery } from "@tanstack/react-query";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState<JSX.Element>(null);
   const [scrollY, setScrollY] = useState<number>(0);
 
-  const { isLoading: isPhotosLoading, data: PhotoData } = useQuery(
-    ["photoList"],
-    getPhotosList
-  );
+  const { isLoading: isPhotosLoading, data: PhotoData } = useQuery({
+    queryKey: ["photoList"],
+    queryFn: () => getPhotosList(),
+  });
 
   const shareData = {
     text: "Thanks for sharing!",

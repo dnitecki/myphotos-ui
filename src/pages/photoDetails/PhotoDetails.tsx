@@ -4,7 +4,6 @@ import {
   getOriginalPhotoUrl,
   getPhotosLocation as getPhotoLocation,
 } from "../../services/photoService";
-import { useQuery } from "react-query";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "./PhotoDetails.scss";
@@ -13,6 +12,7 @@ import L from "leaflet";
 import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
 import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 import { requestFullImage, saveImage } from "../../utils/photoUtils";
+import { useQuery } from "@tanstack/react-query";
 
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
@@ -24,17 +24,24 @@ export default function PhotoDetails({ image }: any) {
     isError: isLocationError,
     isLoading: isLocationLoading,
     data: locationData,
-  } = useQuery(["photoLocation", photoId], () => getPhotoLocation(photoId));
+  } = useQuery({
+    queryKey: ["photoLocation", photoId],
+    queryFn: () => getPhotoLocation(photoId),
+  });
 
   const {
     isError: isExifError,
     isLoading: isExifLoading,
     data: exifData,
-  } = useQuery(["photoExif", photoId], () => getExifData(photoId));
+  } = useQuery({
+    queryKey: ["photoExif", photoId],
+    queryFn: () => getExifData(photoId),
+  });
 
-  const { data: sizeData } = useQuery(["photoSize", photoId], () =>
-    getOriginalPhotoUrl(photoId)
-  );
+  const { data: sizeData } = useQuery({
+    queryKey: ["photoSize", photoId],
+    queryFn: () => getOriginalPhotoUrl(photoId),
+  });
 
   return (
     <>
