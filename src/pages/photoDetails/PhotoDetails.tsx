@@ -11,7 +11,11 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
 import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
-import { requestFullImage, saveImage } from "../../utils/photoUtils";
+import {
+  configureLocationList,
+  requestFullImage,
+  saveImage,
+} from "../../utils/photoUtils";
 import { useQuery } from "@tanstack/react-query";
 
 export default function PhotoDetails({ image }: any) {
@@ -43,6 +47,8 @@ export default function PhotoDetails({ image }: any) {
     queryFn: () => getOriginalPhotoUrl(photoId),
   });
 
+  const { latLong, locationDataList } = configureLocationList(locationData);
+
   return (
     <>
       <div className="photo-item-drawer">
@@ -72,7 +78,7 @@ export default function PhotoDetails({ image }: any) {
               <>
                 <div className="photo-map-container">
                   <MapContainer
-                    center={locationData.latLong}
+                    center={latLong}
                     zoom={8}
                     scrollWheelZoom={false}
                     attributionControl={false}
@@ -80,17 +86,14 @@ export default function PhotoDetails({ image }: any) {
                     dragging={false}
                   >
                     <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
-                    <Marker
-                      position={locationData.latLong}
-                      icon={markerIcon}
-                    ></Marker>
+                    <Marker position={latLong} icon={markerIcon}></Marker>
                   </MapContainer>
                 </div>
                 <ul
                   className="location-details-list
                 "
                 >
-                  {locationData.locationDataList?.map((item, index) => (
+                  {locationDataList?.map((item, index) => (
                     <li key={index} className="location-details-item">
                       <item.icon className="icon" fontSize="inherit" />
                       <h4 className="value">{item.value}</h4>

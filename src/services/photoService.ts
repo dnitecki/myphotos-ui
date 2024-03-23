@@ -19,9 +19,7 @@ export const getPhotosLocation = async (PHOTO_ID: string) => {
   const result = await axios.get(url, {
     headers: { "Content-Type": "application/json" },
   });
-  const locationData = result.data.photo.location;
-  const { latLong, locationDataList } = configureLocationList(locationData);
-  return { latLong, locationDataList };
+  return result.data.photo.location;
 };
 
 export const getExifData = async (PHOTO_ID: string) => {
