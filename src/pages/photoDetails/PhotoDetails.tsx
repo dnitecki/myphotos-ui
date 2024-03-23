@@ -5,6 +5,7 @@ import {
   getPhotosLocation as getPhotoLocation,
 } from "../../services/photoService";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { useQuery } from "@tanstack/react-query";
 import DNLogo from "../../assets/DNLogo.png";
 import "./PhotoDetails.scss";
 import "leaflet/dist/leaflet.css";
@@ -16,7 +17,6 @@ import {
   requestFullImage,
   saveImage,
 } from "../../utils/photoUtils";
-import { useQuery } from "@tanstack/react-query";
 
 export default function PhotoDetails({ image }: any) {
   const photoId = image?.props?.itemID;
