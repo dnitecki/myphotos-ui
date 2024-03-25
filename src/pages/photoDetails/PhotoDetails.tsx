@@ -23,6 +23,7 @@ export default function PhotoDetails({ image }: any) {
     const markerIcon = new L.Icon({
       iconSize: [35, 35],
       iconUrl: DNLogo,
+      className: "map-marker",
     });
     return markerIcon;
   }, []);
@@ -84,11 +85,10 @@ export default function PhotoDetails({ image }: any) {
                 <div className="photo-map-container">
                   <MapContainer
                     center={latLong}
-                    zoom={8}
-                    scrollWheelZoom={false}
+                    zoom={11}
                     attributionControl={false}
                     zoomControl={false}
-                    dragging={false}
+                    dragging={true}
                   >
                     <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
                     <Marker position={latLong} icon={mapMarker}></Marker>
