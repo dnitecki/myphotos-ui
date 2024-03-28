@@ -87,7 +87,7 @@ export default function PhotoDetails({ image }: any) {
                     center={latLong}
                     zoom={12}
                     attributionControl={false}
-                    zoomControl={true}
+                    zoomControl={false}
                     scrollWheelZoom={true}
                     dragging={false}
                   >
