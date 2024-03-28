@@ -85,10 +85,11 @@ export default function PhotoDetails({ image }: any) {
                 <div className="photo-map-container">
                   <MapContainer
                     center={latLong}
-                    zoom={11}
+                    zoom={12}
                     attributionControl={false}
-                    zoomControl={false}
-                    dragging={true}
+                    zoomControl={true}
+                    scrollWheelZoom={true}
+                    dragging={false}
                   >
                     <TileLayer url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png" />
                     <Marker position={latLong} icon={mapMarker}></Marker>
