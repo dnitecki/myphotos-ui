@@ -24,6 +24,10 @@ export const configureExifList = (exifData: ExifType[]) => {
       value: `${make[0].raw._content} ${model[0].raw._content}`,
     },
     {
+      icon: VideocamRoundedIcon,
+      value: lensInfo[0].raw._content,
+    },
+    {
       icon: ShutterSpeedRoundedIcon,
       value: exposureTime[0].raw._content,
     },
@@ -34,10 +38,6 @@ export const configureExifList = (exifData: ExifType[]) => {
     {
       icon: IsoRoundedIcon,
       value: `ISO ${iso[0].raw._content}`,
-    },
-    {
-      icon: VideocamRoundedIcon,
-      value: lensInfo[0].raw._content,
     },
   ];
   return exifDataList;

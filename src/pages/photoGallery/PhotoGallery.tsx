@@ -103,7 +103,7 @@ export default function PhotoGallery() {
 
         <img
           className="header-image"
-          src="https://farm66.staticflickr.com/65535/53406868026_1b0e9f7d53.png"
+          src="https://live.staticflickr.com/65535/53406868026_1b0e9f7d53_b.jpg"
           alt="header"
         />
       </header>

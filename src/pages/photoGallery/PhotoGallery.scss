@@ -69,6 +69,7 @@
   .header-image {
     position: absolute;
     width: 100vw;
+    filter: blur(5px);
     mask-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 1) 50%,
@@ -174,12 +175,34 @@
   .photo-gallery-list {
     width: 50%;
     columns: 4;
+    margin-top: 30rem;
   }
   .photo-item-details {
     width: 40%;
   }
+  .photo-gallery-header {
+    .header-text {
+      margin-top: 5rem;
+      .header-signature {
+        display: flex;
+        width: 25rem;
+        height: auto;
+        img {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          filter: invert(100%);
+        }
+      }
+    }
+    h1 {
+      font-size: 50px;
+    }
+    h2 {
+      font-size: 35px;
+    }
+  }
 }
-
 @media (min-width: 993px) and (max-width: 1199px) {
   .photo-gallery-list {
     columns: 4;
