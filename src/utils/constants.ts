@@ -13,3 +13,12 @@ export const EXIF_ATTRIBUTES = [
   "ISO",
   "LensInfo",
 ];
+
+export const MEDIA_URL =
+  "https://dominicknitecki-media.s3.us-east-2.amazonaws.com/";
+
+export const MEDIA_FILES = {
+  dnIcon: `${MEDIA_URL}dn-icon.png`,
+  dnLogo: `${MEDIA_URL}dn-logo.png`,
+  dnSignature: `${MEDIA_URL}dn-signature.png`,
+};

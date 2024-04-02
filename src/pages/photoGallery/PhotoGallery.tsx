@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
-import myLogo from "../../assets/MyLogo.png";
-import mySignature from "../../assets/DomSignature.png";
 import PhotoDetails from "../photoDetails/PhotoDetails";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
 import WestRoundedIcon from "@mui/icons-material/WestRounded";
 import { useQuery } from "@tanstack/react-query";
+import { MEDIA_FILES } from "../../utils/constants";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -64,7 +63,7 @@ export default function PhotoGallery() {
       >
         <div className="header-text">
           <div className="header-signature">
-            <img src={mySignature} alt="Dom's" />
+            <img src={MEDIA_FILES.dnSignature} alt="Dom's" />
           </div>
           <h2>Photo Library</h2>
           <div className="header-links">
@@ -92,7 +91,11 @@ export default function PhotoGallery() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img className="my-logo" src={myLogo} alt="my logo" />
+                <img
+                  className="my-logo"
+                  src={MEDIA_FILES.dnIcon}
+                  alt="my logo"
+                />
               </a>
             </div>
             <div className="header-link" onClick={handleShare}>
@@ -103,7 +106,7 @@ export default function PhotoGallery() {
 
         <img
           className="header-image"
-          src="https://live.staticflickr.com/65535/53406868026_1b0e9f7d53_b.jpg"
+          src="https://live.staticflickr.com/65535/53406868026_1b0e9f7d53_b.png"
           alt="header"
         />
       </header>

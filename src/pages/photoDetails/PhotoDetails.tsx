@@ -7,7 +7,6 @@ import {
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useQuery } from "@tanstack/react-query";
 import "./PhotoDetails.scss";
-import DNLogo from "../../assets/DNLogo.png";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
@@ -17,12 +16,13 @@ import {
   requestFullImage,
   saveImage,
 } from "../../utils/photoUtils";
+import { MEDIA_FILES } from "../../utils/constants";
 
 export default function PhotoDetails({ image }: any) {
   const mapMarker = useMemo(() => {
     const markerIcon = new L.Icon({
       iconSize: [35, 35],
-      iconUrl: DNLogo,
+      iconUrl: MEDIA_FILES.dnLogo,
       className: "map-marker",
     });
     return markerIcon;
