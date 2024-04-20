@@ -22,3 +22,8 @@ export const MEDIA_FILES = {
   dnLogo: `${MEDIA_URL}dn-logo.png`,
   dnSignature: `${MEDIA_URL}dn-signature.png`,
 };
+
+export const SHARE_DATA = {
+  text: "Thanks for sharing!",
+  url: "https://photos.dominicknitecki.com",
+};

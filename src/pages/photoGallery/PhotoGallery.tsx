@@ -7,7 +7,7 @@ import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
 import WestRoundedIcon from "@mui/icons-material/WestRounded";
 import { useQuery } from "@tanstack/react-query";
-import { MEDIA_FILES } from "../../utils/constants";
+import { MEDIA_FILES, SHARE_DATA } from "../../utils/constants";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -18,11 +18,6 @@ export default function PhotoGallery() {
     queryKey: ["photoList"],
     queryFn: () => getPhotosList(),
   });
-
-  const shareData = {
-    text: "Thanks for sharing!",
-    url: "https://photos.dominicknitecki.com",
-  };
 
   const resetClick = () => {
     setClicked(!clicked);
@@ -36,9 +31,10 @@ export default function PhotoGallery() {
 
   const handleShare = async () => {
     try {
-      await navigator.share(shareData);
+      await navigator.share(SHARE_DATA);
     } catch (error) {}
   };
+
   const imageClickHandler = (
     farm: string,
     server: string,
