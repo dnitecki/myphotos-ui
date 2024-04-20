@@ -28,14 +28,11 @@ export default function PhotoGallery() {
     setClicked(!clicked);
   };
 
-  const handleScroll = useCallback(
-    (event: any) => {
-      const scrollTop = event.currentTarget.scrollTop;
-      setScrollOpacity(1 - scrollTop / 500);
-      console.log(scrollOpacity, scrollTop);
-    },
-    [scrollOpacity]
-  );
+  const handleScroll = useCallback((event: any) => {
+    const scrollTop = event.currentTarget.scrollTop;
+    setScrollOpacity(1 - scrollTop / 500);
+    console.log(scrollOpacity, scrollTop);
+  }, []);
 
   const handleShare = async () => {
     try {
