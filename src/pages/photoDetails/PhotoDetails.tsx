@@ -18,7 +18,7 @@ import {
 } from "../../utils/photoUtils";
 import { MEDIA_FILES } from "../../utils/constants";
 
-export default function PhotoDetails({ image }: any) {
+function PhotoDetails({ image }: any) {
   const mapMarker = useMemo(() => {
     const markerIcon = new L.Icon({
       iconSize: [35, 35],
@@ -133,3 +133,4 @@ export default function PhotoDetails({ image }: any) {
     </>
   );
 }
+export default React.memo(PhotoDetails);

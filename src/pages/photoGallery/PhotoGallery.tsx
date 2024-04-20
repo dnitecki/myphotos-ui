@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import PhotoDetails from "../photoDetails/PhotoDetails";
@@ -12,7 +12,7 @@ import { MEDIA_FILES } from "../../utils/constants";
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState<JSX.Element>(null);
-  const [scrollY, setScrollY] = useState<number>(0);
+  const [scrollOpacity, setScrollOpacity] = useState<number>(null);
 
   const { isLoading: isPhotosLoading, data: PhotoData } = useQuery({
     queryKey: ["photoList"],
@@ -20,7 +20,7 @@ export default function PhotoGallery() {
   });
 
   const shareData = {
-    text: "Check out some of my photos :)",
+    text: "Thanks for sharing!",
     url: "https://photos.dominicknitecki.com",
   };
 
@@ -28,9 +28,14 @@ export default function PhotoGallery() {
     setClicked(!clicked);
   };
 
-  const handleScroll = (event: any) => {
-    setScrollY(event.currentTarget.scrollTop);
-  };
+  const handleScroll = useCallback(
+    (event: any) => {
+      const scrollTop = event.currentTarget.scrollTop;
+      setScrollOpacity(1 - scrollTop / 500);
+      console.log(scrollOpacity, scrollTop);
+    },
+    [scrollOpacity]
+  );
 
   const handleShare = async () => {
     try {
@@ -59,7 +64,7 @@ export default function PhotoGallery() {
     <div onScroll={handleScroll} className="photo-gallery-parallax">
       <header
         className="photo-gallery-header"
-        style={{ opacity: `${1 - scrollY / 500}` }}
+        style={{ opacity: scrollOpacity }}
       >
         <div className="header-text">
           <div className="header-signature">
