@@ -47,7 +47,6 @@ export default function PhotoGallery() {
   const handleScroll = useCallback((event: any) => {
     const scrollTop = event.currentTarget.scrollTop;
     setScrollOpacity(1 - scrollTop / 500);
-    console.log(scrollOpacity, scrollTop);
   }, []);
 
   const handleShare = async () => {
@@ -125,7 +124,7 @@ export default function PhotoGallery() {
 
         <img
           className="header-image"
-          src="https://live.staticflickr.com/65535/53406868026_1b0e9f7d53_b.png"
+          src={MEDIA_FILES.headerimage}
           alt="header"
         />
       </header>

@@ -21,6 +21,8 @@ export const MEDIA_FILES = {
   dnIcon: `${MEDIA_URL}dn-icon.png`,
   dnLogo: `${MEDIA_URL}dn-logo.png`,
   dnSignature: `${MEDIA_URL}dn-signature.png`,
+  headerimage:
+    "https://live.staticflickr.com/65535/53406868026_1b0e9f7d53_b.png",
 };
 
 export const SHARE_DATA = {
