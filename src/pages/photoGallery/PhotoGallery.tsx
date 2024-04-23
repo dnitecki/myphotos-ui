@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import PhotoDetails from "../photoDetails/PhotoDetails";
@@ -13,11 +13,32 @@ export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState<JSX.Element>(null);
   const [scrollOpacity, setScrollOpacity] = useState<number>(null);
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const minSwipeDistance = 75;
 
   const { isLoading: isPhotosLoading, data: PhotoData } = useQuery({
     queryKey: ["photoList"],
     queryFn: () => getPhotosList(),
   });
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEnd.current = null;
+    touchStart.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEnd.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart.current || !touchEnd.current) return;
+    const distance = touchStart.current - touchEnd.current;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isRightSwipe) {
+      resetClick();
+    }
+  };
 
   const resetClick = () => {
     setClicked(!clicked);
@@ -136,7 +157,12 @@ export default function PhotoGallery() {
 
   const imageDetails = (
     <>
-      <div className="photo-item-details">
+      <div
+        className="photo-item-details"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <div className="photo-back-button">
           <WestRoundedIcon fontSize="inherit" onClick={resetClick} />
         </div>
