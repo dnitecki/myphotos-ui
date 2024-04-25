@@ -29,3 +29,8 @@ export const SHARE_DATA = {
   text: "Thanks for sharing!",
   url: "https://photos.dominicknitecki.com",
 };
+
+export const STATUS = {
+  ok: "ok",
+  fail: "fail",
+};

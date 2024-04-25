@@ -16,7 +16,7 @@ import {
   requestFullImage,
   saveImage,
 } from "../../utils/photoUtils";
-import { MEDIA_FILES } from "../../utils/constants";
+import { MEDIA_FILES, STATUS } from "../../utils/constants";
 
 function PhotoDetails({ image }: any) {
   const mapMarker = useMemo(() => {
@@ -30,20 +30,12 @@ function PhotoDetails({ image }: any) {
 
   const photoId = image?.props?.itemID;
 
-  const {
-    isError: isLocationError,
-    isLoading: isLocationLoading,
-    data: locationData,
-  } = useQuery({
+  const { isLoading: isLocationLoading, data: locationData } = useQuery({
     queryKey: ["photoLocation", photoId],
     queryFn: () => getPhotoLocation(photoId),
   });
 
-  const {
-    isError: isExifError,
-    isLoading: isExifLoading,
-    data: exifData,
-  } = useQuery({
+  const { isLoading: isExifLoading, data: exifData } = useQuery({
     queryKey: ["photoExif", photoId],
     queryFn: () => getExifData(photoId),
   });
@@ -53,7 +45,9 @@ function PhotoDetails({ image }: any) {
     queryFn: () => getOriginalPhotoUrl(photoId),
   });
 
-  const { latLong, locationDataList } = configureLocationList(locationData);
+  const { latLong, locationDataList } = configureLocationList(
+    locationData?.photo?.location
+  );
 
   return (
     <>
@@ -80,7 +74,7 @@ function PhotoDetails({ image }: any) {
           <div>Loading...</div>
         ) : (
           <>
-            {!isLocationError ? (
+            {locationData.stat === STATUS.ok ? (
               <>
                 <div className="photo-map-container">
                   <MapContainer
@@ -108,7 +102,7 @@ function PhotoDetails({ image }: any) {
                 </ul>
               </>
             ) : (
-              "No Geographic Data Available"
+              <p>{locationData.message}</p>
             )}
           </>
         )}
@@ -118,7 +112,7 @@ function PhotoDetails({ image }: any) {
             <div>Loading...</div>
           ) : (
             <ul className="attribute-list">
-              {!isExifError
+              {exifData
                 ? exifData.map((item, index) => (
                     <li key={index} className="attribute-item">
                       <item.icon className="icon" fontSize="inherit" />
