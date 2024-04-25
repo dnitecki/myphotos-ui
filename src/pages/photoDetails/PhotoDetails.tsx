@@ -16,7 +16,7 @@ import {
   requestFullImage,
   saveImage,
 } from "../../utils/photoUtils";
-import { MEDIA_FILES, STATUS } from "../../utils/constants";
+import { MEDIA_FILES, MESSAGE, STATUS } from "../../utils/constants";
 
 function PhotoDetails({ image }: any) {
   const mapMarker = useMemo(() => {
@@ -71,7 +71,7 @@ function PhotoDetails({ image }: any) {
       <h1>Photo Details</h1>
       <div className="photo-details-container">
         {isLocationLoading ? (
-          <div>Loading...</div>
+          <p>{MESSAGE.loading}</p>
         ) : (
           <>
             {locationData.stat === STATUS.ok ? (
@@ -109,17 +109,19 @@ function PhotoDetails({ image }: any) {
         <hr />
         <>
           {isExifLoading ? (
-            <div>Loading...</div>
+            <p>{MESSAGE.loading}</p>
           ) : (
             <ul className="attribute-list">
-              {exifData
-                ? exifData.map((item, index) => (
-                    <li key={index} className="attribute-item">
-                      <item.icon className="icon" fontSize="inherit" />
-                      <h4 className="value">{item.value}</h4>
-                    </li>
-                  ))
-                : "No Camera Attribute Data Available"}
+              {exifData ? (
+                exifData.map((item, index) => (
+                  <li key={index} className="attribute-item">
+                    <item.icon className="icon" fontSize="inherit" />
+                    <h4 className="value">{item.value}</h4>
+                  </li>
+                ))
+              ) : (
+                <p>{MESSAGE.noAttr}</p>
+              )}
             </ul>
           )}
         </>

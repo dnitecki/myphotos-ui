@@ -34,3 +34,8 @@ export const STATUS = {
   ok: "ok",
   fail: "fail",
 };
+
+export const MESSAGE = {
+  loading: "Loading...",
+  noAttr: "No Camera Attribute Data Available.",
+};
