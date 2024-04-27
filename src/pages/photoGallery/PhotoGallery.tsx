@@ -81,7 +81,7 @@ export default function PhotoGallery() {
       >
         <div className="header-text">
           <div className="header-signature">
-            <img src={MEDIA_FILES.dnSignature} alt="Dom's" />
+            <img src={MEDIA_FILES.DN_SIGNATURE} alt="Dom's" />
           </div>
           <h2>Photo Library</h2>
           <div className="header-links">
@@ -111,7 +111,7 @@ export default function PhotoGallery() {
               >
                 <img
                   className="my-logo"
-                  src={MEDIA_FILES.dnIcon}
+                  src={MEDIA_FILES.DN_ICON}
                   alt="my logo"
                 />
               </a>
@@ -124,7 +124,7 @@ export default function PhotoGallery() {
 
         <img
           className="header-image"
-          src={MEDIA_FILES.headerimage}
+          src={MEDIA_FILES.HEADER_IMAGE}
           alt="header"
         />
       </header>

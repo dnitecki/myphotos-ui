@@ -22,7 +22,7 @@ function PhotoDetails({ image }: any) {
   const mapMarker = useMemo(() => {
     const markerIcon = new L.Icon({
       iconSize: [35, 35],
-      iconUrl: MEDIA_FILES.dnLogo,
+      iconUrl: MEDIA_FILES.DN_LOGO,
       className: "map-marker",
     });
     return markerIcon;
@@ -71,10 +71,10 @@ function PhotoDetails({ image }: any) {
       <h1>Photo Details</h1>
       <div className="photo-details-container">
         {isLocationLoading ? (
-          <p>{MESSAGE.loading}</p>
+          <p>{MESSAGE.LOADING}</p>
         ) : (
           <>
-            {locationData.stat === STATUS.ok ? (
+            {locationData.stat === STATUS.OK ? (
               <>
                 <div className="photo-map-container">
                   <MapContainer
@@ -109,7 +109,7 @@ function PhotoDetails({ image }: any) {
         <hr />
         <>
           {isExifLoading ? (
-            <p>{MESSAGE.loading}</p>
+            <p>{MESSAGE.LOADING}</p>
           ) : (
             <ul className="attribute-list">
               {exifData ? (
@@ -120,7 +120,7 @@ function PhotoDetails({ image }: any) {
                   </li>
                 ))
               ) : (
-                <p>{MESSAGE.noAttr}</p>
+                <p>{MESSAGE.NO_ATTRIBUTE}</p>
               )}
             </ul>
           )}
