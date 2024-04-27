@@ -37,5 +37,5 @@ export const STATUS = {
 
 export const MESSAGE = {
   loading: "Loading...",
-  noAttr: "No Camera Attribute Data Available.",
+  noAttr: "No camera attribute data available.",
 };
