@@ -1,4 +1,4 @@
-import { ExifType } from "../types/Types";
+import { ExifType, LocationDataType } from "../types/Types";
 import { saveAs } from "file-saver";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import CameraRoundedIcon from "@mui/icons-material/CameraRounded";
@@ -43,7 +43,7 @@ export const configureExifList = (exifData: ExifType[]) => {
   return exifDataList;
 };
 
-export const configureLocationList = (locationData: any) => {
+export const configureLocationList = (locationData: LocationDataType) => {
   const latitude = Number(locationData?.latitude);
   const longitude = Number(locationData?.longitude);
   const latLong: L.LatLngExpression = {

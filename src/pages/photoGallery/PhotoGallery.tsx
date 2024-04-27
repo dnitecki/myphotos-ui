@@ -93,30 +93,32 @@ export default function PhotoGallery() {
     </div>
   );
 
-  const imageDetails = (
-    <>
-      <div
-        className="photo-item-details"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        <div className="photo-back-button">
-          <WestRoundedIcon fontSize="inherit" onClick={resetClick} />
+  const ImageDetails = () => {
+    return (
+      <>
+        <div
+          className="photo-item-details"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <div className="photo-back-button">
+            <WestRoundedIcon fontSize="inherit" onClick={resetClick} />
+          </div>
+          <div className="photo-item-image" id="selected-image">
+            {image}
+          </div>
+          <PhotoDetails image={image} />
         </div>
-        <div className="photo-item-image" id="selected-image">
-          {image}
-        </div>
-        <PhotoDetails image={image} />
-      </div>
-    </>
-  );
+      </>
+    );
+  };
 
   return (
     <>
       <div className="photo-gallery-container">
         <div className={`photo-item-container ${clicked ? "show" : "hide"}`}>
-          {imageDetails}
+          <ImageDetails />
         </div>
         {photoGallery}
       </div>
