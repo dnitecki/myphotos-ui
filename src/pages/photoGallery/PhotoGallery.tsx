@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { memo, useCallback, useRef, useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import PhotoDetails from "../photoDetails/PhotoDetails";
@@ -93,7 +93,7 @@ export default function PhotoGallery() {
     </div>
   );
 
-  const ImageDetails = () => {
+  const ImageDetails = memo(function ImageDetails({ image }: any) {
     return (
       <>
         <div
@@ -112,13 +112,13 @@ export default function PhotoGallery() {
         </div>
       </>
     );
-  };
+  });
 
   return (
     <>
       <div className="photo-gallery-container">
         <div className={`photo-item-container ${clicked ? "show" : "hide"}`}>
-          <ImageDetails />
+          <ImageDetails image={image} />
         </div>
         {photoGallery}
       </div>
