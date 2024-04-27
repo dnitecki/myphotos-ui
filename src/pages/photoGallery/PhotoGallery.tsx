@@ -2,12 +2,9 @@ import React, { useCallback, useRef, useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import PhotoDetails from "../photoDetails/PhotoDetails";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
-import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
 import WestRoundedIcon from "@mui/icons-material/WestRounded";
 import { useQuery } from "@tanstack/react-query";
-import { MEDIA_FILES, SHARE_DATA } from "../../utils/constants";
+import Header from "../../components/header/Header";
 
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -49,12 +46,6 @@ export default function PhotoGallery() {
     setScrollOpacity(1 - scrollTop / 500);
   }, []);
 
-  const handleShare = async () => {
-    try {
-      await navigator.share(SHARE_DATA);
-    } catch (error) {}
-  };
-
   const imageClickHandler = (
     farm: string,
     server: string,
@@ -75,59 +66,7 @@ export default function PhotoGallery() {
 
   const photoGallery = (
     <div onScroll={handleScroll} className="photo-gallery-parallax">
-      <header
-        className="photo-gallery-header"
-        style={{ opacity: scrollOpacity }}
-      >
-        <div className="header-text">
-          <div className="header-signature">
-            <img src={MEDIA_FILES.DN_SIGNATURE} alt="Dom's" />
-          </div>
-          <h2>Photo Library</h2>
-          <div className="header-links">
-            <div className="header-link">
-              <a
-                href="https://www.instagram.com/dominick_nitecki/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <InstagramIcon fontSize="inherit" />
-              </a>
-            </div>
-            <div className="header-link">
-              <a
-                href="https://www.flickr.com/photos/199729283@N07/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <PhotoLibraryRoundedIcon fontSize="inherit" />
-              </a>
-            </div>
-            <div className="header-link">
-              <a
-                href="https://www.dominicknitecki.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  className="my-logo"
-                  src={MEDIA_FILES.DN_ICON}
-                  alt="my logo"
-                />
-              </a>
-            </div>
-            <div className="header-link" onClick={handleShare}>
-              <ShareRoundedIcon fontSize="inherit" />
-            </div>
-          </div>
-        </div>
-
-        <img
-          className="header-image"
-          src={MEDIA_FILES.HEADER_IMAGE}
-          alt="header"
-        />
-      </header>
+      <Header scrollOpacity={scrollOpacity} />
       {!isPhotosLoading ? (
         <ul className="photo-gallery-list">
           {PhotoData.photoset?.photo.map((photo: any, index: number) => (
