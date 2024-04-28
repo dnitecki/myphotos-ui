@@ -3,20 +3,29 @@ import { MEDIA_FILES, SHARE_DATA } from "../../utils/constants";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import PhotoLibraryRoundedIcon from "@mui/icons-material/PhotoLibraryRounded";
+import "./Header.scss";
 
-const Header = ({ scrollOpacity }: any) => {
+const Header = () => {
   const handleShare = async () => {
     try {
       await navigator.share(SHARE_DATA);
     } catch (error) {}
   };
 
+  const gallery = document.getElementById("photo-gallery-parallax");
+  gallery?.addEventListener(
+    "scroll",
+    function () {
+      let header = document.getElementById("photo-gallery-header");
+      const scrollTop = gallery.scrollTop;
+      header.style.opacity = `${1 - scrollTop / 500}`;
+    },
+    false
+  );
+
   return (
     <>
-      <header
-        className="photo-gallery-header"
-        style={{ opacity: scrollOpacity }}
-      >
+      <header className="photo-gallery-header" id="photo-gallery-header">
         <div className="header-text">
           <div className="header-signature">
             <img src={MEDIA_FILES.DN_SIGNATURE} alt="Dom's" />

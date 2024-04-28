@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import {
   getExifData,
   getOriginalPhotoUrl,
@@ -129,4 +129,4 @@ function PhotoDetails({ image }: any) {
     </>
   );
 }
-export default React.memo(PhotoDetails);
+export default memo(PhotoDetails);

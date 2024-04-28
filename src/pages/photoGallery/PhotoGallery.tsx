@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import "./PhotoGallery.scss";
 import { getPhotosList } from "../../services/photoService";
 import PhotoDetails from "../photoDetails/PhotoDetails";
@@ -9,7 +9,6 @@ import Header from "../../components/header/Header";
 export default function PhotoGallery() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [image, setImage] = useState<JSX.Element>(null);
-  const [scrollOpacity, setScrollOpacity] = useState<number>(null);
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const minSwipeDistance = 75;
@@ -41,11 +40,6 @@ export default function PhotoGallery() {
     setClicked(!clicked);
   };
 
-  const handleScroll = useCallback((event: any) => {
-    const scrollTop = event.currentTarget.scrollTop;
-    setScrollOpacity(1 - scrollTop / 500);
-  }, []);
-
   const imageClickHandler = (
     farm: string,
     server: string,
@@ -65,8 +59,8 @@ export default function PhotoGallery() {
   };
 
   const photoGallery = (
-    <div onScroll={handleScroll} className="photo-gallery-parallax">
-      <Header scrollOpacity={scrollOpacity} />
+    <div className="photo-gallery-parallax" id="photo-gallery-parallax">
+      <Header />
       {!isPhotosLoading ? (
         <ul className="photo-gallery-list">
           {PhotoData.photoset?.photo.map((photo: any, index: number) => (
