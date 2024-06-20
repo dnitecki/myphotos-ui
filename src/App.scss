@@ -50,11 +50,9 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 .app {
-  height: 100svh;
-  width: 100svw;
-  overflow-y: visible;
-  overflow-x: scroll;
-  padding: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
   background-color: black;
 }
 h1 {

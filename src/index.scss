@@ -9,3 +9,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+html,
+body {
+  overflow: visible;
+  min-height: 100%;
+  width: 100%;
+}
+* {
+  font-family: "Poppins";
+  box-sizing: border-box;
+  margin: 0;
+}
